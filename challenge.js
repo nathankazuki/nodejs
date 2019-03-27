@@ -1,6 +1,9 @@
 const axios = require('axios');
 const express = require('express');
 const hbs = require('hbs');
+const fs = require('fs');
+
+const port = process.env.PORT || 8081;
 
 var app = express();
 
@@ -24,6 +27,13 @@ hbs.registerHelper('links', (link) => {
 hbs.registerHelper('linkName', (name) => {
 	return name
 });
+
+// app.use((request, response, next) => {
+//     response.render('maintenance.hbs', {
+//     	title: 'Maintenance'
+//     });
+//     // next();
+// });
 
 app.get('/', (request, response) => {
 	response.render('main.hbs', {
@@ -85,6 +95,6 @@ const convertCurrency = async (baseCurrency, newCurrency, amount) => {
 	return `${amount} ${baseCurrency} is worth ${total} ${newCurrency}. You can spend it in the following countries: ${country}`
 };
 
-app.listen(8080, () => {
-	console.log('Server is up on port 8080');
+app.listen(port, () => {
+    console.log(`Server is up on the port ${port}`);
 });
