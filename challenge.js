@@ -28,12 +28,12 @@ hbs.registerHelper('linkName', (name) => {
 	return name
 });
 
-// app.use((request, response, next) => {
-//     response.render('maintenance.hbs', {
-//     	title: 'Maintenance'
-//     });
-//     // next();
-// });
+app.use((request, response, next) => {
+    response.render('maintenance.hbs', {
+    	title: 'Maintenance'
+    });
+    // next();
+});
 
 app.get('/', (request, response) => {
 	response.render('main.hbs', {
